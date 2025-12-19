@@ -1,4 +1,4 @@
-use nelang::lang::{Span, program};
+use yac::lang::{Span, program};
 
 #[test]
 fn test_mixed_line_endings() {

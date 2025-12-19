@@ -1,6 +1,6 @@
-# NeLang - Simple Expression Interpreter
+# Yac - Simple Expression Interpreter
 
-NeLang is a lightweight expression-based language implemented in Rust, designed for simple arithmetic operations, variable assignments, and function definitions. It offers a clean REPL interface for interactive calculations.
+Yac is a lightweight expression-based language implemented in Rust, designed for simple arithmetic operations, variable assignments, and function definitions. It offers a clean REPL interface for interactive calculations.
 
 ## Features
 
@@ -25,8 +25,8 @@ NeLang is a lightweight expression-based language implemented in Rust, designed 
 Clone this repository:
 
 ```bash
-git clone https://github.com/decatile/simple-lang-rs.git
-cd simple-lang-rs
+git clone https://github.com/decatile/yac.git
+cd yac
 ```
 
 ### Run the Interpreter
@@ -75,7 +75,7 @@ Both unary plus, minus, and logical NOT are supported:
 1
 ```
 
-NeLang follows standard operator precedence rules:
+Yac follows standard operator precedence rules:
 
 ```
 > 1 + 2 * 3
@@ -194,7 +194,7 @@ Using built-in functions:
 
 ### Error Handling
 
-NeLang provides detailed error messages that help identify and fix issues in your code:
+Yac provides detailed error messages that help identify and fix issues in your code:
 
 ```
 > 10 / 0
@@ -219,7 +219,7 @@ For parsing errors, the interpreter will also point to the location of the synta
 
 ### Comparison Operators
 
-NeLang supports standard comparison operators:
+Yac supports standard comparison operators:
 
 ```
 > 5 < 10
@@ -240,7 +240,7 @@ Comparison operators return 1 for true and 0 for false.
 
 ### Ternary Operator
 
-NeLang supports the ternary conditional operator with the syntax `condition ? true_expression : false_expression`:
+Yac supports the ternary conditional operator with the syntax `condition ? true_expression : false_expression`:
 
 ```
 > (5 > 3) ? 1 : 0

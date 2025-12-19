@@ -1,5 +1,5 @@
 use core::str;
-use nelang::lang::{
+use yac::lang::{
     Context, Func, IExpression, IFloat, Number, Program, Span, Token, VarAssign, VarAssignExpr,
     program,
 };
@@ -230,9 +230,9 @@ fn main() {
             }
             "-h" | "--help" => {
                 println!(
-                    "Usage: nelang [OPTIONS]
+                    "Usage: yac [OPTIONS]
 
-NeLang - Simple Expression Interpreter
+yac - Simple Expression Interpreter
 
 Options:
   -e, --execute    Execute a program passed through the pipe.

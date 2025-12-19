@@ -1,4 +1,4 @@
-use nelang::lang::{Context, Func, Span, program, EvaluateExpressionError};
+use yac::lang::{Context, Func, Span, program, EvaluateExpressionError};
 use std::rc::Rc;
 
 #[test]
@@ -19,7 +19,7 @@ fn test_builtin_function_failure() {
     let span = Span::new(input);
     let result = program(span).unwrap();
 
-    if let (_, nelang::lang::Program::Expression(token)) = result {
+    if let (_, yac::lang::Program::Expression(token)) = result {
         let eval_result = ctx.evaluate_expression(&token);
 
         // Assert that the evaluation fails

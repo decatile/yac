@@ -1,4 +1,4 @@
-use nelang::lang::{Context, Program, Span, program};
+use yac::lang::{Context, Program, Span, program};
 
 fn parse_and_evaluate(input: &str) -> Result<String, String> {
     let span = Span::new(input);
@@ -15,13 +15,13 @@ fn parse_and_evaluate(input: &str) -> Result<String, String> {
                 Program::Func(token) => {
                     ctx.funcs.insert(
                         token.data.ident.data.0.clone(),
-                        nelang::lang::Func::Custom(token),
+                        yac::lang::Func::Custom(token),
                     );
                     Ok("Ok!".to_string())
                 }
                 Program::Var(token) => match ctx.evaluate_expression(match &token.data.expr {
-                    nelang::lang::VarAssignExpr::Expression(token) => token,
-                    nelang::lang::VarAssignExpr::UserInput(_) => unreachable!(),
+                    yac::lang::VarAssignExpr::Expression(token) => token,
+                    yac::lang::VarAssignExpr::UserInput(_) => unreachable!(),
                 }) {
                     Ok(result) => {
                         ctx.vars.insert(token.data.ident.data.0.clone(), result);
@@ -70,8 +70,8 @@ mod tests {
 
         if let (_, Program::Var(token)) = result {
             let result = ctx.evaluate_expression(match &token.data.expr {
-                nelang::lang::VarAssignExpr::Expression(token) => token,
-                nelang::lang::VarAssignExpr::UserInput(_) => unreachable!(),
+                yac::lang::VarAssignExpr::Expression(token) => token,
+                yac::lang::VarAssignExpr::UserInput(_) => unreachable!(),
             }).unwrap();
             ctx.vars.insert(token.data.ident.data.0.clone(), result);
             assert_eq!(result, 10.0);
@@ -105,7 +105,7 @@ mod tests {
         if let (_, Program::Func(token)) = result {
             ctx.funcs.insert(
                 token.data.ident.data.0.clone(),
-                nelang::lang::Func::Custom(token),
+                yac::lang::Func::Custom(token),
             );
         } else {
             panic!("Expected function definition");
@@ -147,7 +147,7 @@ mod tests {
         if let (_, Program::Func(token)) = result {
             ctx.funcs.insert(
                 token.data.ident.data.0.clone(),
-                nelang::lang::Func::Custom(token),
+                yac::lang::Func::Custom(token),
             );
         }
 

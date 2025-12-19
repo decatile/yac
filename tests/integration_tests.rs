@@ -1,4 +1,4 @@
-use nelang::lang::{Context, Program, Span, program};
+use yac::lang::{Context, Program, Span, program};
 
 #[test]
 fn test_program_execution_sequence() {
@@ -76,7 +76,7 @@ fn test_program_execution_sequence() {
             Program::Func(token) => {
                 ctx.funcs.insert(
                     token.data.ident.data.0.clone(),
-                    nelang::lang::Func::Custom(token),
+                    yac::lang::Func::Custom(token),
                 );
                 assert_eq!(
                     "Ok!", *expected,
@@ -86,8 +86,8 @@ fn test_program_execution_sequence() {
             }
             Program::Var(token) => {
                 let eval_result = ctx.evaluate_expression(match &token.data.expr {
-                    nelang::lang::VarAssignExpr::Expression(token) => token,
-                    nelang::lang::VarAssignExpr::UserInput(_) => unreachable!(),
+                    yac::lang::VarAssignExpr::Expression(token) => token,
+                    yac::lang::VarAssignExpr::UserInput(_) => unreachable!(),
                 });
                 assert!(
                     eval_result.is_ok(),
@@ -125,15 +125,15 @@ fn test_error_propagation() {
         match program {
             Program::Var(token) => {
                 let value = ctx.evaluate_expression(match &token.data.expr {
-                    nelang::lang::VarAssignExpr::Expression(token) => token,
-                    nelang::lang::VarAssignExpr::UserInput(_) => unreachable!(),
+                    yac::lang::VarAssignExpr::Expression(token) => token,
+                    yac::lang::VarAssignExpr::UserInput(_) => unreachable!(),
                 }).unwrap();
                 ctx.vars.insert(token.data.ident.data.0.clone(), value);
             }
             Program::Func(token) => {
                 ctx.funcs.insert(
                     token.data.ident.data.0.clone(),
-                    nelang::lang::Func::Custom(token),
+                    yac::lang::Func::Custom(token),
                 );
             }
             _ => {}
@@ -192,15 +192,15 @@ fn test_nested_expressions() {
         match program {
             Program::Var(token) => {
                 let value = ctx.evaluate_expression(match &token.data.expr {
-                    nelang::lang::VarAssignExpr::Expression(token) => token,
-                    nelang::lang::VarAssignExpr::UserInput(_) => unreachable!(),
+                    yac::lang::VarAssignExpr::Expression(token) => token,
+                    yac::lang::VarAssignExpr::UserInput(_) => unreachable!(),
                 }).unwrap();
                 ctx.vars.insert(token.data.ident.data.0.clone(), value);
             }
             Program::Func(token) => {
                 ctx.funcs.insert(
                     token.data.ident.data.0.clone(),
-                    nelang::lang::Func::Custom(token),
+                    yac::lang::Func::Custom(token),
                 );
             }
             _ => {}
